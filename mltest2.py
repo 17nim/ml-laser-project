@@ -19,7 +19,9 @@ pose = mp_pose.Pose(model_complexity=1,
 # ตัวแปรป้องกันการส่งคำสั่งซ้ำ
 has_triggered = False  # ควบคุมให้ยกแขนได้ครั้งเดียว
 reset_time = None  # เวลาที่เริ่มหน่วง 114 วินาที
-cooldown = 114  # 1 นาที 54 วินาที (114 วินาที)
+cooldown_1 = 76  # 1 นาที 54 วินาที (114 วินาที)
+cooldown_2 = 114  # 1 นาที 54 วินาที (114 วินาที)
+cooldown_3 = 126  # 1 นาที 54 วินาที (114 วินาที)
 hold_start_time = None  # เวลาที่เริ่มยกแขน
 hold_time_required = 3  # ต้องยกแขนค้างไว้อย่างน้อย 3 วินาที
 
@@ -55,12 +57,12 @@ def classify_pose(landmarks, image_height):
 
     # ตรวจสอบว่าครบเวลาหรือยัง
     if has_triggered:
-        if reset_time is not None and (current_time - reset_time) >= cooldown:
+        if reset_time is not None and (current_time - reset_time) >= cooldown_1:
             has_triggered = False  # รีเซ็ตให้ยกมือได้อีกครั้ง
             reset_time = None  # เคลียร์เวลารีเซ็ต
             return "Ready Again"
 
-        remaining_time = int(cooldown - (current_time - reset_time)) if reset_time else 0
+        remaining_time = int(cooldown_1 - (current_time - reset_time)) if reset_time else 0
         return f"Wait {remaining_time}s"
 
     # **ตรวจสอบว่าทั้งสองมือยกขึ้นสูงกว่าหัวไหล่**
@@ -79,13 +81,13 @@ def classify_pose(landmarks, image_height):
             # เปิด SoundSwitch และเล่นเพลงใหม่
             subprocess.run(["open", "-a", "SoundSwitch"])
             time.sleep(1)  # รอให้แอปเปิดก่อน
-            pyautogui.click(x=88, y=189)  # ปรับตำแหน่งให้ตรงกับโฟลเดอร์
+            pyautogui.click(x=794.0078125, y=842.26171875)  # ปรับตำแหน่งให้ตรงกับโฟลเดอร์
             time.sleep(1)  # รอให้แอปเปิดก่อน
-            pyautogui.click(x=432, y=564)  # ปรับตำแหน่งให้ตรงกับโฟลเดอร์
+            pyautogui.click(x=135.8671875, y=214.4296875)  # ปรับตำแหน่งให้ตรงกับโฟลเดอร์
             time.sleep(1)  # รอให้แอปเปิดก่อน
-            pyautogui.click(x=823, y=150)  # ปรับตำแหน่งให้ตรงกับโฟลเดอร์
-            time.sleep(1)  # รอให้แอปเปิดก่อน
-            pyautogui.doubleClick(x=823, y=150)
+            pyautogui.click(x=125.91015625, y=237.89453125)  # ปรับตำแหน่งให้ตรงกับโฟลเดอร์
+            time.sleep(1)
+            pyautogui.doubleClick(x=372.6015625, y=154.55078125)  # ปรับตำแหน่งให้ตรงกับโฟลเดอร์
             time.sleep(1)  # รอให้แอปเปิดก่อน
             pyautogui.press("space")  # กดปุ่ม Play
             return "Hands Up (Triggered - Restarted)"
