@@ -79,13 +79,13 @@ def classify_pose(landmarks, image_height):
             # เปิด SoundSwitch และเล่นเพลงใหม่
             subprocess.run(["open", "-a", "SoundSwitch"])
             time.sleep(1)  # รอให้แอปเปิดก่อน
-            pyautogui.click(x=88.69921875, y=189.75)  # ปรับตำแหน่งให้ตรงกับโฟลเดอร์
+            pyautogui.click(x=88, y=189)  # ปรับตำแหน่งให้ตรงกับโฟลเดอร์
             time.sleep(1)  # รอให้แอปเปิดก่อน
-            pyautogui.click(x=432.1640625, y=564.375)  # ปรับตำแหน่งให้ตรงกับโฟลเดอร์
+            pyautogui.click(x=432, y=564)  # ปรับตำแหน่งให้ตรงกับโฟลเดอร์
             time.sleep(1)  # รอให้แอปเปิดก่อน
-            pyautogui.click(x=823.5859375, y=150.34765625)  # ปรับตำแหน่งให้ตรงกับโฟลเดอร์
+            pyautogui.click(x=823, y=150)  # ปรับตำแหน่งให้ตรงกับโฟลเดอร์
             time.sleep(1)  # รอให้แอปเปิดก่อน
-            pyautogui.doubleClick(x=823.5859375, y=150.34765625)
+            pyautogui.doubleClick(x=823, y=150)
             time.sleep(1)  # รอให้แอปเปิดก่อน
             pyautogui.press("space")  # กดปุ่ม Play
             return "Hands Up (Triggered - Restarted)"
