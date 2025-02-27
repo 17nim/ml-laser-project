@@ -76,21 +76,23 @@ def classify_pose(landmarks, image_height):
             reset_time = current_time  # ตั้งเวลาเริ่มหน่วง
 
             # **รีเซ็ตเพลงไปที่จุดเริ่มต้น**
-            pyautogui.press("home")  # หรือใช้ "0" แล้วกด Enter ถ้าใช้กับบางโปรแกรม
+            # pyautogui.press("home")  # หรือใช้ "0" แล้วกด Enter ถ้าใช้กับบางโปรแกรม
 
             # เปิด SoundSwitch และเล่นเพลงใหม่
             subprocess.run(["open", "-a", "SoundSwitch"])
             time.sleep(1)  # รอให้แอปเปิดก่อน
-            pyautogui.click(x=794.0078125, y=842.26171875)  # ปรับตำแหน่งให้ตรงกับโฟลเดอร์
+            #pyautogui.click(x=794.0078125, y=842.26171875)  # ปรับตำแหน่งให้ตรงกับโฟลเดอร์
             time.sleep(1)  # รอให้แอปเปิดก่อน
-            pyautogui.click(x=135.8671875, y=214.4296875)  # ปรับตำแหน่งให้ตรงกับโฟลเดอร์
+            pyautogui.click(x=153.5078125, y=220.4765625)  # ปรับตำแหน่งให้ตรงกับโฟลเดอร์
             time.sleep(1)  # รอให้แอปเปิดก่อน
-            pyautogui.click(x=125.91015625, y=237.89453125)  # ปรับตำแหน่งให้ตรงกับโฟลเดอร์
+            pyautogui.click(x=143.34765625, y=237.89453125)  # ปรับตำแหน่งให้ตรงกับโฟลเดอร์
             time.sleep(1)
-            pyautogui.doubleClick(x=372.6015625, y=154.55078125)  # ปรับตำแหน่งให้ตรงกับโฟลเดอร์
+            pyautogui.doubleClick(x=371.734375, y=132.29296875)  # ปรับตำแหน่งให้ตรงกับโฟลเดอร์
             time.sleep(1)  # รอให้แอปเปิดก่อน
+
+            pyautogui.hotkey("shift", "space")
             pyautogui.press("space")  # กดปุ่ม Play
-            return "Hands Up (Triggered - Restarted)"
+            return "Hand Up (FunkonAut).."
 
         else:
             remaining_hold_time = int(hold_time_required - (current_time - hold_start_time))
