@@ -172,10 +172,6 @@ while cap.isOpened():
         # Classify the pose.
         pose_label = classify_pose(results.pose_landmarks.landmark, image_bgr.shape[0])
 
-    # # Display the classification label on the frame.
-    # cv2.putText(image_bgr, f"Pose: {pose_label}", (10, 30), 
-    #             cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
-
     # Define text parameters
     text = f"Pose: {pose_label}"
     font = cv2.FONT_HERSHEY_SIMPLEX
