@@ -62,7 +62,7 @@ def classify_pose(landmarks, image_height):
 
     # ตรวจสอบว่าครบเวลาหรือยัง
     if has_triggered:
-        if song_1_has_triggered == True:
+        if song_1_has_triggered:
             if reset_time is not None and (current_time - reset_time) >= cooldown_1:
                 song_1_has_triggered = False
                 has_triggered = False  # รีเซ็ตให้ยกมือได้อีกครั้ง
@@ -96,7 +96,7 @@ def classify_pose(landmarks, image_height):
     if (lw_y > ls_y and lw_y < lh_y) and (rw_y > rs_y and rw_y < rh_y) and (abs(lw_x - rw_x) > 2.7 * abs(ls_x - rs_x)):
         if hold_start_time is None:
             hold_start_time = current_time  # เริ่มจับเวลายกแขน
-            return "Hold... 3s"
+            return "[Song1] Hold... 3s"
         elif (current_time - hold_start_time) >= hold_time_required:
             has_triggered = True  # ป้องกันการกดซ้ำ
             song_1_has_triggered = True  # ป้องกันการกดซ้ำ
@@ -104,35 +104,35 @@ def classify_pose(landmarks, image_height):
             play_song.openPetrunko()
         else:
             remaining_hold_time = int(hold_time_required - (current_time - hold_start_time))
-            return f"Hold... {remaining_hold_time}s"
+            return f"[Song1] Hold... {remaining_hold_time}s"
 
     # Song 2
     elif (lw_y < ls_y and le_y > ls_y) and (rw_y < rs_y and re_y > rs_y):
         if hold_start_time is None:
             hold_start_time = current_time  # เริ่มจับเวลายกแขน
-            return "Hold... 3s"
+            return "[Song2] Hold... 3s"
         elif (current_time - hold_start_time) >= hold_time_required:
             has_triggered = True  # ป้องกันการกดซ้ำ
-            song_1_has_triggered = True  # ป้องกันการกดซ้ำ
+            song_2_has_triggered = True  # ป้องกันการกดซ้ำ
             reset_time = current_time  # ตั้งเวลาเริ่มหน่วง
             play_song.openFunkonaut()
         else:
             remaining_hold_time = int(hold_time_required - (current_time - hold_start_time))
-            return f"Hold... {remaining_hold_time}s"
+            return f"[Song2] Hold... {remaining_hold_time}s"
 
     # Song 3
     elif (lw_y < le_y and le_y < ls_y) and (rw_y < re_y and re_y < rs_y):
         if hold_start_time is None:
             hold_start_time = current_time  # เริ่มจับเวลายกแขน
-            return "Hold... 3s"
+            return "[Song3] Hold... 3s"
         elif (current_time - hold_start_time) >= hold_time_required:
             has_triggered = True  # ป้องกันการกดซ้ำ
-            song_1_has_triggered = True  # ป้องกันการกดซ้ำ
+            song_3_has_triggered = True  # ป้องกันการกดซ้ำ
             reset_time = current_time  # ตั้งเวลาเริ่มหน่วง
             play_song.openAstroFunk()
         else:
             remaining_hold_time = int(hold_time_required - (current_time - hold_start_time))
-            return f"Hold... {remaining_hold_time}s"
+            return f"[Song3] Hold... {remaining_hold_time}s"
 
     else:
         hold_start_time = None  # รีเซ็ตเวลาเมื่อแขนลดลง
